@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 from flask import Flask, render_template, send_from_directory
 from flask_socketio import SocketIO, emit
+from set_detect import *
 
 app = Flask(__name__, static_folder="./templates/static")
 app.config["SECRET_KEY"] = "secret!"
@@ -67,7 +68,7 @@ def receive_image(image):
     """
     # Decode the base64-encoded image data
     image = base64_to_image(image)
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    gray = detect_set(image)
     frame_resized = cv2.resize(gray, (640, 360))
     encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 90]
     result, frame_encoded = cv2.imencode(".jpg", frame_resized, encode_param)
