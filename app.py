@@ -89,4 +89,7 @@ def index():
 
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True, port=5000, host='0.0.0.0')
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--port", type=int, default=5000,help="An image file name you want to find the set of")
+    args = parser.parse_args()
+    socketio.run(app, debug=True, port=args.port, host='0.0.0.0')
