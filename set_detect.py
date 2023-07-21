@@ -6,7 +6,6 @@ def detect_set(image):
     return  cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 
-
 def cut_contour(image,contours,contourindex):
     mask = np.zeros_like(image) # Create mask where white is what we want, black otherwise
     cv2.drawContours(mask, contours, contourindex, (255, 255, 255), -1) # Draw filled contour in mask
@@ -40,7 +39,7 @@ def resize_to_resolution(image, target_width=256, target_height=256):
 def find_cards(image):
     card_list = []
     # converting image into grayscale image
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
     # setting threshold of gray image
     _, threshold = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
