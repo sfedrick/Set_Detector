@@ -7,7 +7,7 @@ RUN apt-get -y update && apt-get install -y \
   ffmpeg \ 
   libsm6 \
   libxext6
-
+RUN apt-get install git
 RUN pip install --upgrade setuptools 
 
 COPY requirements.txt .
