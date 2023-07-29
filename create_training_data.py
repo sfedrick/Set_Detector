@@ -19,10 +19,12 @@ def save_frames(video_path, output_folder,name):
             break
         cards = find_cards(frame)
         # Save the frame as an image in the output folder
+        card_num =0
         for card in cards:
-            frame_filename = f"{output_folder}/{name}{frame_count:04d}.jpg"
-            cv2.imwrite(frame_filename, card)
 
+            frame_filename = f"{output_folder}/{name}{card_num}{frame_count:04d}.jpg"
+            cv2.imwrite(frame_filename, card)
+            card_num +=1
         frame_count += 1
 
     # Release the video capture object
@@ -38,4 +40,4 @@ if __name__ == "__main__":
     video_path = args.video 
     card_name = args.name
     output_folder = "sandbox/training_set"     
-    save_frames(video_path,output_folder card_name)
+    save_frames(video_path,output_folder,card_name)
